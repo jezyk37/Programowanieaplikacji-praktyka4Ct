@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble sor ver 1</title>
+</head>
+<body>
+    <script>
+        
+        //divide and conquer: dziel i zwyciezj
+        function dzielenietablic(tab){
+                //warunek stopu rekurencji
+            if(tab.length <=1){
+                return tab;
+            }
+            const polowa = Math.floor(tab.length/2)
+            const lewa = tab.slice(0,polowa)
+            const prawa = tab.slice(polowa)
+                //wywolanie rekurencyjne
+            return scalanietablic(dzielenietablic(lewa),dzielenietablic(prawa))
+            }
+        function scalanietablic(lewa, prawa){
+            let wynik = []
+            let i = 0
+            let j = 0
+            //scalanie posortowanych fragmentow tablicy
+
+            while(i<lewa.length && j<prawa.length){
+                if(lewa[i]<prawa[j]){
+                    wynik.push(lewa[i])
+                    i++
+                }else{
+                    wynik.push(prawa[j])
+                    j++;
+                }
+            }
+            //dodajemy pozostałe elementy przez wywołanie rekurencyjne
+            return wynik.concat(lewa.slice(i).concat(prawa.slice(j)))
+        }
+        
+        const tab = [4,2,1,5,6,7,5,44];
+        console.log("posortowana tablica: ", dzielenietablic(tab))
+    </script>
+</body>
+</html>

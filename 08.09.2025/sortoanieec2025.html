@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble sor ver 2</title>
+</head>
+<body>
+    <script>
+        const imiona = ['arek','darek','zygmunt','mieczysław'];
+
+       
+        const wynik = Iterator.from(imiona).map(el=>el.length).filter(el => el > 5).take(1).toArray()  ;      
+        console.log(wynik)
+    </script>
+</body>
+</html>
