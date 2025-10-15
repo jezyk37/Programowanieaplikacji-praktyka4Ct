@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class WeatherAPI{
+            async getWeather(city){
+                return `Pogoda w ${city}: 25stC, Słonecznie`
+            }
+        }
+        class NewsAPI {
+            getTopNews(){
+                return["Wiecej deszczu przez weekend" , "niebo zachmurzone"]
+            }
+        }
+        class CurrencyAPI{
+            async getExchangeRate(currency){
+                return `kurs ${currency}: 4.70 PLN`
+            }
+        }
+        //fasade
+        class WeatherFasade{
+            constructor(){
+                this.weather = new WeatherAPI;
+                this.news = new NewsAPI;
+                this.rate = new CurrencyAPI
+            }
+            async getInfo(city,currency){
+                const weather = await this.weather.getWeather(city);
+                const news = await this.news.getTopNews();
+                const rate = await this.rate.getExchangeRate(currency);
+
+                return{
+                    weather,
+                    news,
+                    rate
+
+                }
+            }
+        }
+
+        //implemntacja fasady
+
+        (async ()=>{
+            const obiektFasady = new WeatherFasade();
+            const info = await obiektFasady.getInfo("Pszczyna", "USD");
+            console.log(info)
+        })();
+    </script>
+</body>
+</html>

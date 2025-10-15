@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Kitchen{
+            prepareMeal(meal){
+                console.log(`Przygotowanie posiłku: ${meal}`)
+            }
+
+        }
+        class Delivery{
+            scheduleDelivery(address){
+                console.log(`Dostawa zaplanowana na adres: ${address}`)
+            }
+        }
+        class Payment{
+            processPayment(amount){
+                console.log(`Przetwarzanie płatności: ${amount}`)
+            }
+        }
+
+        class FodFasada{
+            constructor(){
+                this.kuchnia = new Kitchen();
+                this.dostawa = new Delivery();
+                this.platnosc = new Payment();
+            }
+            orderFood(meal,address,amount){
+                console.log(`Rozpoczecie zamówienia...`)
+
+                this.platnosc.processPayment(amount)
+                this.kuchnia.prepareMeal(meal);
+                this.dostawa.scheduleDelivery(address);
+                
+                console.log(`Zakończenie zamówienia`)
+            }
+        }
+        const zamowienienr1 = new FodFasada();
+        zamowienienr1.orderFood("Pizza Margaritta", "ul. poniatowskiego 2", 40)
+    </script>
+</body>
+</html>

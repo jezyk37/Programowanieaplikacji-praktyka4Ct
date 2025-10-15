@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fasada2</title>
+</head>
+<body>
+    <script>
+        //Podsystem
+        class AudioSystem{
+            turnOn(){
+                console.log("Audio włączone");
+            }
+            setVolume(level){
+                console.log(`Głośność ustawiona na ${level}`)
+            }
+        }
+        class VideoSystem{
+            turnOn(){
+                console.log("Wideo włączone");
+            }
+            setResolution(resolution){
+                console.log(`Roździelczość ustaiowna na ${resolution}`);
+            }
+        }
+        class Streamingservice{
+            connect(){
+                console.log(`Połączono z serwisem streamingowym`)
+            }
+            play(movie){
+                console.log(`Odtwarzanie filmu ${movie}`);
+            }
+        }
+
+        //fasada
+        class HomeAudioVideoSystemFasady{
+            constructor(){
+                this.audio = new AudioSystem();
+                this.video = new VideoSystem();
+                this.streaming = new Streamingservice()
+            }
+            watchMovie(movie){
+                console.log("Przygotowanie do ogladania filmy")
+                this.audio.turnOn();
+                this.audio.setVolume(80);
+                this.video.turnOn();
+                this.video.setResolution("1080p");
+                this.streaming.connect();
+                this.streaming.play(movie);
+
+                console.log("Miłego seansu")
+            }
+        }
+        //implementacja wzorca faasda
+        const mojsystemaudiovideo = new HomeAudioVideoSystemFasady();
+        mojsystemaudiovideo.watchMovie("Władca pierscieni")
+    </script>
+</body>
+</html>

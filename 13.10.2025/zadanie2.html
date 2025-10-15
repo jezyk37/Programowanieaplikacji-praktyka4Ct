@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Ekspres do kawy - Fasada</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 40px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h2>Ekspres do kawy</h2>
+
+    <form id="kawaForm">
+        <label for="typKawy">Rodzaj kawy:</label>
+        <select id="typKawy">
+            <option value="">-- Wybierz --</option>
+            <option value="espresso">Espresso</option>
+            <option value="czarna">Czarna</option>
+            <option value="biala">Biała</option>
+        </select>
+
+        <label for="iloscCukru">Ilość cukru:</label>
+        <select id="iloscCukru">
+            <option value="">-- Wybierz --</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+
+        <label for="rozmiar">Wielkość:</label>
+        <select id="rozmiar">
+            <option value="">-- Wybierz --</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+        </select>
+
+        <button type="button" id="obliczBtn">Oblicz</button>
+    </form>
+
+    <div id="wynik"></div>
+
+    <script>
+        class SystemCen {
+            constructor() {
+                this.cenyKawy = {
+                    espresso: 5,
+                    czarna: 6,
+                    biala: 7
+                };
+                this.cenyRozmiaru = {
+                    mala: 0,
+                    srednia: 2,
+                    duza: 4
+                };
+            }
+            obliczCene(typ, cukier, rozmiar) {
+                let cena = 0;
+                cena += this.cenyKawy[typ] || 0;
+                cena += this.cenyRozmiaru[rozmiar] || 0;
+                cena += Number(cukier) * 0.5;
+                return cena;
+            }
+        }
+
+        class SystemWyswietlania {
+            pokazCene(cena, typ, cukier, rozmiar) {
+                return `Kawa: ${typ}, Cukier: ${cukier}, Wielkość: ${rozmiar}. Cena: ${cena.toFixed(2)} zł`;
+            }
+        }
+
+        class FasadaEkspresu {
+            constructor() {
+                this.systemCen = new SystemCen();
+                this.systemWyswietlania = new SystemWyswietlania();
+            }
+            przygotujKawe(typ, cukier, rozmiar) {
+                const cena = this.systemCen.obliczCene(typ, cukier, rozmiar);
+                return this.systemWyswietlania.pokazCene(cena, typ, cukier, rozmiar);
+            }
+        }
+
+        const fasada = new FasadaEkspresu();
+        const typKawy = document.getElementById("typKawy");
+        const iloscCukru = document.getElementById("iloscCukru");
+        const rozmiar = document.getElementById("rozmiar");
+        const wynik = document.getElementById("wynik");
+
+        document.getElementById("obliczBtn").addEventListener("click", () => {
+            const typ = typKawy.value;
+            const cukier = iloscCukru.value;
+            const roz = rozmiar.value;
+            if (!typ || !cukier || !roz) {
+                wynik.textContent = "Uzupełnij wszystkie pola.";
+                return;
+            }
+            const msg = fasada.przygotujKawe(typ, cukier, roz);
+            wynik.textContent = msg;
+        });
+    </script>
+
+</body>
+</html>
