@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Fabryka Rowerów</title>
+  <style>
+    img {
+      max-width: 300px;
+      height: auto;
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Wybierz rower:</h2>
+  <select id="rowerSelect">
+    <option value="">-- wybierz --</option>
+  </select>
+  <button id="okBtn">OK</button>
+
+  <div id="wynik"></div>
+
+  <script>
+    class Rower {
+      constructor(nazwa, rozmiar, zdjecie) {
+        this.nazwa = nazwa;
+        this.rozmiar = rozmiar;
+        this.zdjecie = zdjecie;
+      }
+
+      infoHTML() {
+        return `
+          <p><strong>${this.nazwa}</strong></p>
+          <p>Rozmiar: ${this.rozmiar}</p>
+          <img src="${this.zdjecie}" alt="Zdjęcie roweru">
+        `;
+      }
+    }
+
+    class Rower1 extends Rower {
+      constructor() {
+        super("Rower górski MTB INDIANA X-Enduro 2.7 M15", "27.5 cala", "https://prod-api.electro.pl/api/images/gallery_500_500/thumbnails/images/38/3858238/INDIANA-X-Enduro-2-7-M15-27.5-cala-meski-Czarno-pomaranczowy-skos.jpg");
+      }
+    }
+
+    class Rower2 extends Rower {
+      constructor() {
+        super("ROWER SPARTACUS RoadPro SZOSA FITNESS", "28 cali", "https://a.allegroimg.com/s512/113b91/c8715a3b4220952ada9696ec2c36/ROWER-SPARTACUS-RoadPro-SZOSA-FITNESS-28-NEW-2023");
+      }
+    }
+
+    class Rower3 extends Rower {
+      constructor() {
+        super("Rower Miejski Dorozhnik LUX", "26 cali", "https://a.allegroimg.com/original/11107f/81a707ea405d869157bfabf8f081/Rower-Miejski-26-Dorozhnik-LUX");
+      }
+    }
+
+    class Rower4 extends Rower {
+      constructor() {
+        super("Turbo Levo Hardtail", "29 cali", "https://assets.specialized.com/i/specialized/95120-70_LEVO-HT-29-BLK_HERO?$scom-pdp-product-image-xl$&fmt=webp");
+      }
+    }
+
+    class Rower5 extends Rower {
+      constructor() {
+        super("SOLIDNY LEKKI ROWER SKŁADANY MINI SKŁADAK ALUMINIOWY SHIMANO", "16 cali", "https://i.erli.pl/db6ier.a48fe9.l.webp");
+      }
+    }
+
+    class RowerFactory {
+      static createRower(type) {
+        switch(type) {
+          case 'rower1': return new Rower1();
+          case 'rower2': return new Rower2();
+          case 'rower3': return new Rower3();
+          case 'rower4': return new Rower4();
+          case 'rower5': return new Rower5();
+          default: return null;
+        }
+      }
+
+      static getListaRowerow() {
+        return [
+          { id: 'rower1', inst: new Rower1() },
+          { id: 'rower2', inst: new Rower2() },
+          { id: 'rower3', inst: new Rower3() },
+          { id: 'rower4', inst: new Rower4() },
+          { id: 'rower5', inst: new Rower5() },
+        ];
+      }
+    }
+
+    const select = document.getElementById('rowerSelect');
+    const okBtn = document.getElementById('okBtn');
+    const wynikDiv = document.getElementById('wynik');
+
+    const rowery = RowerFactory.getListaRowerow();
+    rowery.forEach(rower => {
+      const option = document.createElement('option');
+      option.value = rower.id;
+      option.textContent = rower.inst.nazwa;
+      select.appendChild(option);
+    });
+
+    okBtn.addEventListener('click', () => {
+      const wybrany = select.value;
+      const rower = RowerFactory.createRower(wybrany);
+
+      if (rower) {
+        wynikDiv.innerHTML = rower.infoHTML();
+      } else {
+        wynikDiv.innerHTML = "<p>Proszę wybrać rower.</p>";
+      }
+    });
+  </script>
+
+</body>
+</html>
