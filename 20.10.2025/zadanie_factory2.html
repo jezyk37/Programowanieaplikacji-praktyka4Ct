@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+//clasy które trafia do fabryki
+        class powiadomienia{
+            constructor(wiadomosc){
+                this.wiadomosc = wiadomosc
+            }
+            send(){
+                console.log(`Wysyłam powiadomienie: ${this.wiadomosc}`)
+            }
+        }
+
+        //produkty dla faktory
+        class Emailpowiadomienia extends powiadomienia{
+            send(){
+                console.log(`Wysyłam powiadomienie: ${this.wiadomosc}`)
+            }
+        }
+        class Smspowiadomienia extends powiadomienia{
+            send(){
+                console.log(`Wysyłam powiadomienie: ${this.wiadomosc}`)
+            }
+        }
+        class Pushpowiadomienia extends powiadomienia{
+            send(){
+                console.log(`Wysyłam powiadomienie: ${this.wiadomosc}`)
+            }
+        }
+        class Chatpowiadomienia extends powiadomienia{
+            send(){
+                console.log(`Wysyłam powiadomienie: ${this.wiadomosc}`)
+            }
+        }
+
+        //fabryka
+        class powiadomieniafactoru{
+            static createPowiadomienia(type,wiadomosc){
+                switch(type){
+                    case "email":
+                        return new Emailpowiadomienia(wiadomosc);
+                        break;
+                    case "sms":
+                        return new Smspowiadomienia(wiadomosc);
+                        break;
+                    case "push":
+                        return new Pushpowiadomienia(wiadomosc);
+                        break;
+                    case "chat":
+                        return new Chatpowiadomienia(wiadomosc);
+                        break;
+                    default:
+                        throw new Error("Nieznany typ powiadomienia");
+                    break;
+                    
+                }
+            }
+        }
+        //testowanie
+        const email = powiadomieniafactoru.createPowiadomienia("email","rizz")
+        const push = powiadomieniafactoru.createPowiadomienia("push","rizz")
+        const sms = powiadomieniafactoru.createPowiadomienia("sms","rizz")
+        const chat = powiadomieniafactoru.createPowiadomienia("chat","rizz")
+
+        email.send();
+        push.send();
+        sms.send();
+        chat.send();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Fabryka uczniów</title>
+</head>
+<body>
+
+  <h2>Wybierz ucznia:</h2>
+  <select id="uczenSelect">
+    <option value="">-- wybierz --</option>
+  </select>
+  <button id="okBtn">OK</button>
+
+  <div id="wynik"></div>
+
+  <script>
+    class Uczen {
+      constructor(nazwa, wzrost, waga, zainteresowanie) {
+        this.nazwa = nazwa;
+        this.wzrost = wzrost;
+        this.waga = waga;
+        this.zainteresowanie = zainteresowanie;
+      }
+
+      infoHTML() {
+        return `
+          <p><strong>${this.nazwa}</strong></p>
+          <p>Wzrost: ${this.wzrost} cm</p>
+          <p>Waga: ${this.waga} kg</p>
+          <p>Zainteresowanie: ${this.zainteresowanie}</p>
+        `;
+      }
+    }
+
+    class Uczen1 extends Uczen {
+      constructor() {
+        super("jezyk", 180, 60, "buty");
+      }
+    }
+
+    class Uczen2 extends Uczen {
+      constructor() {
+        super("biały", 187, 80, "koszykówka");
+      }
+    }
+
+    class Uczen3 extends Uczen {
+      constructor() {
+        super("nikiel", 180, 90, "gry komputerowe");
+      }
+    }
+
+    class Uczen4 extends Uczen {
+      constructor() {
+        super("maksym", 180, 70, "muzyka");
+      }
+    }
+
+    class Uczen5 extends Uczen {
+      constructor() {
+        super("kondzio", 180, 80, "dziewczyny");
+      }
+    }
+
+    class UczenFactory {
+      static createUczen(type) {
+        switch(type) {
+          case 'uczen1': return new Uczen1();
+          case 'uczen2': return new Uczen2();
+          case 'uczen3': return new Uczen3();
+          case 'uczen4': return new Uczen4();
+          case 'uczen5': return new Uczen5();
+          default: return null;
+        }
+      }
+
+      static getListaUczniow() {
+        return [
+          { id: 'uczen1', inst: new Uczen1() },
+          { id: 'uczen2', inst: new Uczen2() },
+          { id: 'uczen3', inst: new Uczen3() },
+          { id: 'uczen4', inst: new Uczen4() },
+          { id: 'uczen5', inst: new Uczen5() },
+        ];
+      }
+    }
+
+    const select = document.getElementById('uczenSelect');
+    const okBtn = document.getElementById('okBtn');
+    const wynikDiv = document.getElementById('wynik');
+
+    const uczniowie = UczenFactory.getListaUczniow();
+    uczniowie.forEach(uczen => {
+      const option = document.createElement('option');
+      option.value = uczen.id;
+      option.textContent = uczen.inst.nazwa;
+      select.appendChild(option);
+    });
+
+    okBtn.addEventListener('click', () => {
+      const wybrany = select.value;
+      const uczen = UczenFactory.createUczen(wybrany);
+
+      if (uczen) {
+        wynikDiv.innerHTML = uczen.infoHTML();
+      } else {
+        wynikDiv.innerHTML = "<p>Proszę wybrać ucznia.</p>";
+      }
+    });
+  </script>
+
+</body>
+</html>
