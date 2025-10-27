@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        //pogoda
+        class StacjaPogodowa {
+            constructor() {
+                this.obserwatorzy = [];
+                this.temperatura = 0
+            }
+            subscribe(obserwator){
+                this.obserwatorzy.push(obserwator)
+            }
+
+            unsubscribe(obserwator){
+                this.obserwatorzy = this.obserwatorzy.filter(ob=>ob!==obserwator)
+            }
+            setTeperatur(temp){
+                console.log(`nowa temperatura: ${temp}`)
+                this.temperatura = temp
+                this.powiadomienieobserwatora();
+            }
+            powiadomienieobserwatora(){
+                    this.obserwatorzy.forEach(ob=>ob.update(this.obserwatorzy));
+            }
+        }
+
+        class NaTelefon{
+            constructor(name){
+                this.name=name;
+            }
+            update(temp){
+                console.log(`${this.name} wyswietlacz telefonu: temp = ${temp}`)
+            }
+        }
+        class NaStronie{
+            update(temp){
+                console.log(`temp aktualna na stronie www = ${temp}`)
+            }
+        }
+
+        //testowanie
+
+        const stacjapogodowa = new StacjaPogodowa()
+        const iphone = new NaTelefon('Iphone 16 pro')
+        const stronawww = new NaStronie();
+
+        stacjapogodowa.subscribe(iphone)
+        stacjapogodowa.subscribe(stronawww)
+
+        stacjapogodowa.setTeperatur(18)
+
+        stacjapogodowa.unsubscribe(iphone)
+        stacjapogodowa.setTeperatur(-5)
+
+
+        //patrz na zdjecie 27pazdziernik2025
+    </script>
+
+</body>
+</html>

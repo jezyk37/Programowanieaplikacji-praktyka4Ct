@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wywiadówka</title>
+</head>
+<body>
+    <div class="container">
+        <h2>System wywiadówka</h2>
+        
+        <div>
+            <label>Wybierz klasę:</label>
+            <select id="selectKlasa">
+                <option value="">wybierz</option>
+                <option value="1CT">1CT</option>
+                <option value="2CT">2CT</option>
+                <option value="3CT">3CT</option>
+                <option value="4CT">4CT</option>
+            </select>
+            <button onclick="pokazUczniow()">OK</button>
+        </div>
+
+        <div>
+            <h3>Klasa</h3>
+            <div id="lista">-</div>
+        </div>
+    </div>
+
+    <script>
+        class Uczen {
+            constructor(imie, klasa) {
+                this.imie = imie;
+                this.klasa = klasa;
+            }
+        }
+
+        const uczen1 = new Uczen('Konrad Bieńkowski', '1CT');
+        const uczen2 = new Uczen('Stanisław Skowroński', '2CT');
+        const uczen3 = new Uczen('Jakub Nikiel', '2CT');
+        const uczen4 = new Uczen('Maksymilian Szkorupa', '3CT');
+        const uczen5 = new Uczen('Jakub Kiecok', '3CT');
+        const uczen6 = new Uczen('Marcel Szczerek', '3CT');
+        const uczen7 = new Uczen('Jakub Moliński', '4CT');
+        const uczen8 = new Uczen('Jan Grzegorski', '4CT');
+        const uczen9 = new Uczen('Kamil Sokołowski', '4CT');
+        const uczen10 = new Uczen('Dawid Kaszuba', '4CT');
+
+        const uczniowie = [uczen1, uczen2, uczen3, uczen4, uczen5, uczen6, uczen7, uczen8, uczen9, uczen10];
+        const klasy = {};
+
+        uczniowie.forEach(u => {
+            if (!klasy[u.klasa]) klasy[u.klasa] = [];
+            klasy[u.klasa].push(u.imie);
+        });
+
+        class Subject {
+            constructor() {
+                this.observers = [];
+            }
+            subscribe(observer) {
+                this.observers.push(observer);
+            }
+            notify(klasa, dane) {
+                this.observers.forEach(observer => observer.update(klasa, dane));
+            }
+        }
+
+        class Observer {
+            constructor(nazwaKlasy, idElementu) {
+                this.nazwaKlasy = nazwaKlasy;
+                this.element = document.getElementById(idElementu);
+            }
+            update(klasa, dane) {
+                if (this.nazwaKlasy === klasa) {
+                    let html = '<ul>';
+                    dane.forEach(uczen => {
+                        html += '<li>' + uczen + '</li>';
+                    });
+                    html += '</ul>';
+                    this.element.innerHTML = html;
+                }
+            }
+        }
+
+        const system = new Subject();
+
+        const obs1 = new Observer('1CT', 'lista');
+        const obs2 = new Observer('2CT', 'lista');
+        const obs3 = new Observer('3CT', 'lista');
+        const obs4 = new Observer('4CT', 'lista');
+
+        system.subscribe(obs1);
+        system.subscribe(obs2);
+        system.subscribe(obs3);
+        system.subscribe(obs4);
+
+    
+        function pokazUczniow() {
+            const wybor = document.getElementById('selectKlasa').value;
+            if (wybor && klasy[wybor]) {
+                system.notify(wybor, klasy[wybor]);
+            }
+        }
+    </script>
+</body>
+</html>
