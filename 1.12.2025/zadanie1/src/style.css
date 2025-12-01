@@ -1,0 +1,37 @@
+
+
+.czerwony {
+  background-color: red;
+  color: white;
+}
+
+.zielony {
+  background-color: green;
+  color: orange;
+}
+
+.niebieski {
+  background-color: blue;
+  color: black;
+}
+
+
+.header,
+.main,
+.footer {
+  padding: 40px;
+  text-align: center;
+}
+
+.main {
+  min-height: 200px;
+}
+
+.footer {
+  padding: 20px;
+}
+.wybor{
+  min-height: 20px;
+  padding: 40px;
+  text-align: center;
+}
