@@ -1,0 +1,12 @@
+.displayFoto{
+  display: inline-block;
+  margin: 5px;
+}
+.switchKategory{
+
+}
+.switchKategory input{
+  display: inline;
+  width: 20px;
+  transition: 0.4s;
+}
