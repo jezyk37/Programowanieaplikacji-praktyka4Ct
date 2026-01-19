@@ -1,0 +1,15 @@
+
+λ npm install -g @angular/cli ^C
+
+λ ng new projekt --standalone=false^C
+
+λ cd projekt^C
+
+λ ng g c comoponents/start^C
+
+λ ng g c comoponents/nudny^C
+
+λ ng g c comoponents/zarabisty^C
+
+λ ng serve^C
+
