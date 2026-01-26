@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrl: './aniacjapierwsza.css',
 })
 export class Aniacjapierwsza {
+nazwaanimacji: string = 'animacja Pierwsza - PZSNR 1'
+nazwaefektu: string = 'powiekszenie zoom'
+foto: string = 'public/zdjecia/t1.jpg'
+
+zoom: boolean = false;
+toggleZoom(){
+  this.zoom = !this.zoom
+}
 
 }

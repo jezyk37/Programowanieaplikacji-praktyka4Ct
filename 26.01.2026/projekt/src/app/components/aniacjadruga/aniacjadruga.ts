@@ -7,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './aniacjadruga.css',
 })
 export class Aniacjadruga {
+nazwaanimacji: string = 'animacja Druga - PZSNR 1'
+nazwaefektu: string = 'zmiana opacity'
+foto: string = 'public/zdjecia/t2.jpg'
 
+opacity: boolean = false;
+toggleOpacity(){
+  this.opacity = !this.opacity
+}
 }

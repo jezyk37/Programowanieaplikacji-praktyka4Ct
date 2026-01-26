@@ -1,0 +1,23 @@
+.zdjecia {
+    width: 250px;
+    border: 1px solid greenyellow;
+    border-radius: 20px;
+    padding: 15px;
+    height: auto;
+    cursor: pointer;
+    filter: blur(0);
+    transform: scale(1);
+    transition: transform 0.4s ease;
+}
+
+.zdjecia.animacja1 {
+    filter: blur(10px);
+}
+
+.zdjecia.animacja2 {
+    transform:  scale(1.2)
+}
+
+.zdjecia.animacja3 {
+    transform: rotate(-10deg) scale(1.05);
+}
