@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.MainPage"
+             Title="Kalkulator Biegacza">
+
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="20">
+
+            <Label Text="Kalkulator biegacza" FontSize="32" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="#1F4ED8"/>
+
+        <Entry x:Name="DistanceEntry" Placeholder="Dystans (km)" Keyboard="Numeric"/>
+        <Entry x:Name="TimeEntry" Placeholder="Czas (minuty)" Keyboard="Numeric"/>
+        <Button Text="Oblicz" FontSize="24" BackgroundColor="#1F3ED8" TextColor="White" HeightRequest="60" Clicked="OnCalcuateClicked"/>
+            
+        <Grid ColumnSpacing="30" HorizontalOptions="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <VerticalStackLayout Grid.Column="0">
+            <Label Text="Prędkosc" FontSize="18" HorizontalTextAlignment="Center"/>
+            <Label x:Name="SpeedLabel" Text="-- km" FontSize="26" FontAttributes="Bold" TextColor="#1F4ED8" HorizontalTextAlignment='Center'/>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout Grid.Column="1">
+            <Label Text="Tępo" FontSize="18" HorizontalTextAlignment="Center"/>
+            <Label x:Name="PaceLabel" Text="-- min/km" FontSize="26" FontAttributes="Bold" TextColor="#F39C12" HorizontalTextAlignment='Center'/>
+        </VerticalStackLayout>
+
+
+    </VerticalStackLayout>
+   
+
+</ContentPage>

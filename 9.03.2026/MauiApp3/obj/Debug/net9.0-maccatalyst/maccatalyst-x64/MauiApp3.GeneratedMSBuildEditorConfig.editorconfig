@@ -1,0 +1,61 @@
+is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = 
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.TargetFramework = net9.0-maccatalyst
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = false
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MauiApp3
+build_property.ProjectDir = C:\Users\programista\Desktop\4Ct\JakubMoliński\Programowanieaplikacji-praktyka4Ct\9.03.2026\MauiApp3\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[C:/Users/programista/Desktop/4Ct/JakubMoliński/Programowanieaplikacji-praktyka4Ct/9.03.2026/MauiApp3/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp3.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Users/programista/Desktop/4Ct/JakubMoliński/Programowanieaplikacji-praktyka4Ct/9.03.2026/MauiApp3/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp3.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[C:/Users/programista/Desktop/4Ct/JakubMoliński/Programowanieaplikacji-praktyka4Ct/9.03.2026/MauiApp3/GaleriaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp3.GaleriaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = GaleriaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = GaleriaPage.xaml
+
+[C:/Users/programista/Desktop/4Ct/JakubMoliński/Programowanieaplikacji-praktyka4Ct/9.03.2026/MauiApp3/KontaktPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp3.KontaktPage.xaml
+build_metadata.AdditionalFiles.TargetPath = KontaktPage.xaml
+build_metadata.AdditionalFiles.RelativePath = KontaktPage.xaml
+
+[C:/Users/programista/Desktop/4Ct/JakubMoliński/Programowanieaplikacji-praktyka4Ct/9.03.2026/MauiApp3/OnasPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp3.OnasPage.xaml
+build_metadata.AdditionalFiles.TargetPath = OnasPage.xaml
+build_metadata.AdditionalFiles.RelativePath = OnasPage.xaml
+
+[C:/Users/programista/Desktop/4Ct/JakubMoliński/Programowanieaplikacji-praktyka4Ct/9.03.2026/MauiApp3/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp3.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[C:/Users/programista/Desktop/4Ct/JakubMoliński/Programowanieaplikacji-praktyka4Ct/9.03.2026/MauiApp3/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp3.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
