@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="appMenu2.Kontakt"
+             Title="Kontakt">
+    <VerticalStackLayout>
+        <Label 
+            Text="Kontakcik"
+            FontSize="22"
+            FontAttributes="Bold"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Frame CornerRadius="12" Padding="10">
+            <Entry x:Name="TitleEntry" Placeholder="Tytuł wiadomości..."/>
+
+        </Frame>
+
+        <Frame CornerRadius="12" Padding="10">
+            <Entry x:Name="MessageEditor" Placeholder="Twoja wiadomości..." HeightRequest="120"/>
+
+        </Frame>
+
+        <Button Text="Wyślij" BackgroundColor="Blue" TextColor="White" CornerRadius="10" Clicked="WyslijWiadomosc"/>
+
+    </VerticalStackLayout>
+</ContentPage>
